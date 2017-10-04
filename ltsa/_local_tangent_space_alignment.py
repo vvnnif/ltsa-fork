@@ -190,7 +190,6 @@ class LocalTangentSpaceAlignment(object):
         self._theta_pinv = theta_pinv
         self._qsign = qifirstsign
 
-
     def _solve_wt(self):
         """
         Perform the global alignment of the Local Tangent Space Alignment procedure.

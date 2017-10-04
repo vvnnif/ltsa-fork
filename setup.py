@@ -1,15 +1,18 @@
 from setuptools import setup
 
+
 def readme():
-    with open('README.rst') as f:
+    with open('README.md') as f:
         return f.read()
 
 setup(
     name='ltsa',
-    version='0.1',
-    description='Package for local tangent space alignment manifold learning.',
-    author= "Charles Gadd",
-    author_email= "cwlgadd@gmail.com",
+    version='0.2',
+    description='Package for Local Tangent Space Alignment manfiold learning.',
+    author="Charles gadd",
+    author_email="cwlgadd@gmail.com",
+    url="https://gitlab.com/charles1992/ltsa",
+    download_url="https://gitlab.com/charles1992/ltsa",
     packages=['ltsa', 'ltsa.utils', 'ltsa.testing', ],
     license='Creative Commons Attribution-Noncommercial-Share Alike license',
     long_description=readme(),

@@ -3,7 +3,6 @@ import h5py
 import unittest
 from nose.tools import with_setup, nottest
 import numpy as np
-import matplotlib.pyplot as plt
 
 import ltsa
 
@@ -16,7 +15,7 @@ class LTSATestCase(unittest.TestCase):
 
         switch = 1
         if switch:
-            fTr = spio.loadmat('baseline/KLRF_train75.mat')
+            fTr = spio.loadmat('ltsa/testing/baseline/KLRF_train75.mat')
             Output = fTr['output']
         else:
             fTr = h5py.File('baseline/Train_N400.mat')

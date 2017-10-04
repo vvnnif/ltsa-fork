@@ -15,7 +15,7 @@ class PreImageTestCase(unittest.TestCase):
 
         switch = 1
         if switch:
-            fTr = spio.loadmat('baseline/KLRF_train75.mat')
+            fTr = spio.loadmat('ltsa/testing/baseline/KLRF_train75.mat')
             Output = fTr['output']
         else:
             fTr = h5py.File('baseline/Train_N400.mat')
@@ -41,12 +41,6 @@ class PreImageTestCase(unittest.TestCase):
     @nottest
     def error(self, mat1, mat2, fun):
         assert(mat1.shape == mat2.shape)
-        #print "error: {0}".format(np.mean((mat1 - mat2)**2))
-        #print "normalised error: {0}".format(np.mean(np.linalg.norm((mat1 - mat2) / np.linalg.norm(mat1))**2))
-        #self.MAPEerror(mat1, mat2)
-        #print "mean absolute percentage error: {0}".format(1)
-        # note: equal for normalised feature case. This should happen and maybe should be a unit test?
-        print fun(mat1, mat2)
         return fun(mat1, mat2)
 
     @nottest

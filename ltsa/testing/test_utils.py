@@ -1,10 +1,8 @@
-import h5py
 import unittest
 from nose.tools import with_setup, nottest
 import numpy as np
 
 import ltsa
-
 
 
 class UtilsTestCase(unittest.TestCase):
