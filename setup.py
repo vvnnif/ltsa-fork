@@ -7,7 +7,7 @@ def readme():
 
 setup(
     name='ltsa',
-    version='0.2',
+    version='0.3',
     description='Package for Local Tangent Space Alignment manfiold learning.',
     author="Charles gadd",
     author_email="cwlgadd@gmail.com",
