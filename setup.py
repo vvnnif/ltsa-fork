@@ -6,7 +6,7 @@ def readme():
         return f.read()
 
 setup(
-    name='ltsa-fork',
+    name='ltsafork',
     version='0.3',
     description='Package for Local Tangent Space Alignment manfiold learning.',
     author="Charles gadd",
