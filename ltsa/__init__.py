@@ -6,5 +6,4 @@ The ``local tangent space alignment`` module.
 from ._local_tangent_space_alignment import *
 
 # testing
-from testing import *
 from utils import *
