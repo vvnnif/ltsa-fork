@@ -17,9 +17,7 @@ import matplotlib.pyplot as plt
 
 np.set_printoptions(precision=25)
 
-
 __all__ = ['LocalTangentSpaceAlignment']
-
 
 class LocalTangentSpaceAlignment(object):
     """
@@ -156,20 +154,25 @@ class LocalTangentSpaceAlignment(object):
 
         return qi
 
-    def __init__(self, x, k, new_dim, name='LTSA', cacheQ=False):
+    def __init__(self, x, k, new_dim, theta = None, pinv = None, neighbors = None, name='LTSA', cacheQ=False, skip_data = False):
         """
         Initialize the object.
         """
         self._seed = time.time()
-        self._X = x
         self._k = k
         self._new_dim = new_dim
         self.__name__ = name
         self._cache_q = [cacheQ, False]
 
-        nbrs = NearestNeighbors(n_neighbors=self.k, algorithm='ball_tree').fit(x)
-        distances, indices = nbrs.kneighbors(x)
-        self._neighbourhoods = indices
+        if skip_data is False:
+            self._X = x
+            nbrs = NearestNeighbors(n_neighbors=self.k, algorithm='ball_tree').fit(x)
+            distances, indices = nbrs.kneighbors(x)
+            self._neighbourhoods = indices
+        else:
+            self._neighbourhoods = neighbors
+            self._theta = theta
+            self._pinv = pinv
 
     def __str__(self):
         """
@@ -204,8 +207,9 @@ class LocalTangentSpaceAlignment(object):
         """
         # First find the local co-ordinates and Moor-Penrose generalized inverse of them
         #   In doing this we discard the Qi matrices as caching is expensive. We can instead recover with theta
-        self._solve_theta()
-
+        if theta_and_pinvs is None:
+            self._solve_theta()
+            
         self._solve_wt()
 
         self._solve_l()
@@ -222,7 +226,7 @@ class LocalTangentSpaceAlignment(object):
         theta = np.zeros((self.n, self.new_dim, self.k))
         theta_pinv = np.zeros((self.n, self.k, self.new_dim))
         for i in range(self.n):
-
+ 
             qi = self.get_qi(cluster=i)
 
             xi = self._X[self._neighbourhoods[i, :], :]
