@@ -13,7 +13,7 @@ setup(
     author_email="cwlgadd@gmail.com",
     url="https://gitlab.com/charles1992/ltsa",
     download_url="https://gitlab.com/charles1992/ltsa",
-    packages=['ltsa', 'ltsa.utils', 'ltsa.testing', ],
+    packages=['ltsa', 'ltsa.utils'],
     license='Creative Commons Attribution-Noncommercial-Share Alike license',
     long_description=readme(),
     zip_safe=False,
